@@ -1,10 +1,10 @@
 
 
+
 USE DATABASE "ASSIGNMENTS_DATABASE";
 
 --QUESTION 1:-  Load the given dataset into snowflake with a primary key to Order Date column.
---AND
---QUESTION 3:- Check the data type for Order date and Ship date and mention in what data type it should be?
+
 
 CREATE OR REPLACE TABLE MD_SALES_DATA_FINAL
     (
@@ -47,6 +47,21 @@ ALTER TABLE MD_SALES_DATA_FINAL
 ADD PRIMARY KEY (ORDER_ID);
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+--QUESTION 3:- Check the data type for Order date and Ship date and mention in what data type it should be?
+
+-- LOADING TIME I USE 'DATE' FORMAT. I CAN CHANGE THIS FORMAT IN 'DD-MM-YYYY' FORMAT, BUT I DON'T WANT TO CHANGE 'DATE' FORMAT IN MAIN TABLE.
+
+
+
+SELECT TO_CHAR(ORDER_DATE,'DD-MM-YYYY') AS DATE_DD_MM_YYYY FROM MD_SALES_DATA_FINAL;
+
+SELECT TO_CHAR(SHIP_DATE,'DD-MM-YYYY') AS DATE_DD_MM_YYYY FROM MD_SALES_DATA_FINAL;
+
+
+SELECT * FROM MD_SALES_DATA_FINAL LIMIT 100;
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
 --QUESTION 4:- Create a new column called order_extract and extract the number after the last ‘–‘from Order ID column.
 
 SELECT SUBSTRING(ORDER_ID,9,10) FROM MD_SALES_DATA_FINAL ;
@@ -111,4 +126,3 @@ SELECT * FROM MD_SALES_DATA_FINAL LIMIT 100;
 
 
 -------------------------------------------------------------------------------------------------- 
- 
